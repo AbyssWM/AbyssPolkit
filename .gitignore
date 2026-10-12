@@ -51,14 +51,14 @@ Makefile
 .qt/
 .rcc/
 hpa/
-abysspolkitagent_autogen/
+abyss-polkit-agent_autogen/
 meta_types/
 qmltypes/
 
 # Built binaries / generated sources
-abysspolkitagent
-abysspolkitagent_qmltyperegistrations.cpp
+abyss-polkit-agent
+abyss-polkit-agent_qmltyperegistrations.cpp
 
 # Generated unit/service files (from build/install)
-abysspolkitagent.service
-abysspolkitagent-dbus.service
+abyss-polkit-agent.service
+abyss-polkit-agent-dbus.service

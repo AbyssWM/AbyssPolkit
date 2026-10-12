@@ -7,7 +7,7 @@
 static std::string configPath() {
     const char* xdg  = getenv("XDG_CONFIG_HOME");
     std::string base = xdg ? xdg : (std::string{getenv("HOME")} + "/.config");
-    return base + "/abysspolkitagent/abysspolkitagent.conf";
+    return base + "/abyss-polkit-agent/abyss-polkit-agent.conf";
 }
 
 CConfigManager::CConfigManager() : m_path(configPath()) {}
@@ -25,7 +25,7 @@ void CConfigManager::load() {
     cfg.commence();
     const auto res = cfg.parse();
     if (res.error)
-        std::print(stderr, "abysspolkitagent: config parse error: {}\n", res.getError());
+        std::print(stderr, "abyss-polkit-agent: config parse error: {}\n", res.getError());
 
     auto iv = [&](const char* k) { return std::any_cast<Abyssparse::INT>(cfg.getConfigValue(k)); };
 

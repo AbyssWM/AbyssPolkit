@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 file(READ "${CMAKE_SOURCE_DIR}/VERSION" VER_RAW)
 string(STRIP ${VER_RAW} VER)
 
-project(hpa VERSION ${VER} LANGUAGES CXX)
+project(abysspolkit VERSION ${VER} LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -20,7 +20,7 @@ pkg_check_modules(deps REQUIRED IMPORTED_TARGET
     sdbus-c++>=2
 )
 
-add_executable(abysspolkitagent
+add_executable(abyss-polkit-agent
     src/main.cpp
     src/config/Config.cpp
     src/config/Config.hpp
@@ -32,17 +32,17 @@ add_executable(abysspolkitagent
     src/ui/Dialog.hpp
 )
 
-target_link_libraries(abysspolkitagent PRIVATE PkgConfig::deps)
+target_link_libraries(abyss-polkit-agent PRIVATE PkgConfig::deps)
 
 include(GNUInstallDirs)
 set(LIBEXECDIR ${CMAKE_INSTALL_FULL_LIBEXECDIR})
-configure_file(assets/abysspolkitagent-service.in abysspolkitagent.service @ONLY)
-configure_file(assets/abysspolkitagent-dbus.in abysspolkitagent-dbus.service @ONLY)
+configure_file(assets/abyss-polkit-agent-service.in abyss-polkit-agent.service @ONLY)
+configure_file(assets/abyss-polkit-agent-dbus.in abyss-polkit-agent-dbus.service @ONLY)
 
-install(TARGETS abysspolkitagent
+install(TARGETS abyss-polkit-agent
         DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
-install(FILES ${CMAKE_BINARY_DIR}/abysspolkitagent.service
+install(FILES ${CMAKE_BINARY_DIR}/abyss-polkit-agent.service
         DESTINATION "lib/systemd/user")
-install(FILES ${CMAKE_BINARY_DIR}/abysspolkitagent-dbus.service
+install(FILES ${CMAKE_BINARY_DIR}/abyss-polkit-agent-dbus.service
         DESTINATION ${CMAKE_INSTALL_DATADIR}/dbus-1/services
-        RENAME org.abyssland.abysspolkitagent.service)
+        RENAME org.abyssland.AbyssPolkitAgent.service)

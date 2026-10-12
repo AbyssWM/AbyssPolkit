@@ -1,4 +1,4 @@
 rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake
 cmake .
 make -j$(nproc)
-systemctl --user restart abysspolkitagent
+systemctl --user restart abyss-polkit-agent

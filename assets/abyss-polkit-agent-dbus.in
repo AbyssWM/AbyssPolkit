@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.abyssland.AbyssPolkitAgent
+Exec=@LIBEXECDIR@/abyss-polkit-agent
+SystemdService=abyss-polkit-agent.service

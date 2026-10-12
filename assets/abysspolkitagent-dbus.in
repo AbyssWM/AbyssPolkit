@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=org.abyssland.abysspolkitagent
-Exec=@LIBEXECDIR@/abysspolkitagent
-SystemdService=abysspolkitagent.service

@@ -177,7 +177,7 @@ void CDialog::build() {
                    ->minSize({460.0, targetHeight})
                    ->maxSize({600.0, targetHeight})
                    ->appTitle("Authentication Required")
-                   ->appClass("abysspolkitagent")
+                   ->appClass("abyss-polkit-agent")
                    ->commence();
 
     m_closeListener = m_window->m_events.closeRequest.listen([] { g_pAgent->cancel(); });
