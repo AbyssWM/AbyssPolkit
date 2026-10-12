@@ -1,9 +1,9 @@
 #pragma once
 
-#include <hyprutils/memory/SharedPtr.hpp>
-#include <hyprutils/memory/UniquePtr.hpp>
+#include <abyssutils/memory/SharedPtr.hpp>
+#include <abyssutils/memory/UniquePtr.hpp>
 
-#include <hyprtoolkit/core/Backend.hpp>
+#include <abysstoolkit/core/Backend.hpp>
 
 #include <memory>
 #include <string>
@@ -27,7 +27,7 @@ class CAgent {
     void                                                     cancel();
     void                                                     selectIdentity(const std::string& identityString);
 
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend> backend() {
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend> backend() {
         return m_backend;
     }
 
@@ -36,11 +36,11 @@ class CAgent {
     }
 
   private:
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend> m_backend;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend> m_backend;
 
     CPolkitListener                                          m_listener;
 
-    Hyprutils::Memory::CUniquePointer<CDialog>               m_dialog;
+    Abyssutils::Memory::CUniquePointer<CDialog>               m_dialog;
 };
 
 inline std::unique_ptr<CAgent> g_pAgent;

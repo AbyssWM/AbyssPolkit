@@ -84,7 +84,7 @@ CPolkitListener::~CPolkitListener() {
     }
 }
 
-bool CPolkitListener::registerAgent(Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend> backend) {
+bool CPolkitListener::registerAgent(Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend> backend) {
     m_backend = backend;
 
     try {

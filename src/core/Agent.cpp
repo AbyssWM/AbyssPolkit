@@ -4,8 +4,8 @@
 
 #include <print>
 
-using namespace Hyprutils::Memory;
-using namespace Hyprtoolkit;
+using namespace Abyssutils::Memory;
+using namespace Abysstoolkit;
 
 CAgent::CAgent()  = default;
 CAgent::~CAgent() = default;
@@ -17,7 +17,7 @@ bool CAgent::start() {
 
     m_backend = IBackend::create();
     if (!m_backend) {
-        std::print(stderr, "failed to create hyprtoolkit backend\n");
+        std::print(stderr, "failed to create abysstoolkit backend\n");
         return false;
     }
 

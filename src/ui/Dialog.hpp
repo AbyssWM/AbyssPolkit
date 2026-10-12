@@ -1,14 +1,14 @@
 #pragma once
 
-#include <hyprutils/memory/SharedPtr.hpp>
-#include <hyprutils/signal/Signal.hpp>
+#include <abyssutils/memory/SharedPtr.hpp>
+#include <abyssutils/signal/Signal.hpp>
 
-#include <hyprtoolkit/core/Backend.hpp>
-#include <hyprtoolkit/window/Window.hpp>
-#include <hyprtoolkit/element/Textbox.hpp>
-#include <hyprtoolkit/element/Button.hpp>
-#include <hyprtoolkit/element/Text.hpp>
-#include <hyprtoolkit/element/Element.hpp>
+#include <abysstoolkit/core/Backend.hpp>
+#include <abysstoolkit/window/Window.hpp>
+#include <abysstoolkit/element/Textbox.hpp>
+#include <abysstoolkit/element/Button.hpp>
+#include <abysstoolkit/element/Text.hpp>
+#include <abysstoolkit/element/Element.hpp>
 
 #include <string>
 
@@ -16,7 +16,7 @@
 
 class CDialog {
   public:
-    CDialog(const CPolkitListener::SAuthRequest& req, Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend> backend);
+    CDialog(const CPolkitListener::SAuthRequest& req, Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend> backend);
     ~CDialog();
 
     void show();
@@ -29,29 +29,29 @@ class CDialog {
   private:
     void                                                            build();
     void                                                            buildPasswordField();
-    void                                                            showStatus(Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>& wrap, bool& shown, bool show);
+    void                                                            showStatus(Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>& wrap, bool& shown, bool show);
     void                                                            showPasswordField(bool show);
 
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend>        m_backend;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IWindow>         m_window;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend>        m_backend;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IWindow>         m_window;
 
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::CTextboxElement> m_passwordField;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::CTextElement>    m_errorLabel;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::CTextElement>    m_infoLabel;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::CTextElement>    m_capsLockLabel;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::CButtonElement>  m_authButton;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::CButtonElement>  m_detailsButton;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_detailsContainer;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_detailsParent;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_statusContainer;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_capsWrap;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_errWrap;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_infoWrap;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_passwordWrap;
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IElement>        m_btnRow;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::CTextboxElement> m_passwordField;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::CTextElement>    m_errorLabel;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::CTextElement>    m_infoLabel;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::CTextElement>    m_capsLockLabel;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::CButtonElement>  m_authButton;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::CButtonElement>  m_detailsButton;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_detailsContainer;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_detailsParent;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_statusContainer;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_capsWrap;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_errWrap;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_infoWrap;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_passwordWrap;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IElement>        m_btnRow;
 
-    Hyprutils::Signal::CHyprSignalListener                          m_closeListener;
-    Hyprutils::Signal::CHyprSignalListener                          m_keyListener;
+    Abyssutils::Signal::CAbyssSignalListener                          m_closeListener;
+    Abyssutils::Signal::CAbyssSignalListener                          m_keyListener;
 
     CPolkitListener::SAuthRequest                                   m_req;
     std::string                                                     m_currentPassword;

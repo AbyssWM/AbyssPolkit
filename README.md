@@ -1,17 +1,17 @@
-# hyprpolkitagent
-A simple polkit authentication agent for Hyprland, written in C++ with [hyprtoolkit](https://github.com/hyprwm/hyprtoolkit).
+# abysspolkitagent
+A simple polkit authentication agent for Abyssland, written in C++ with [abysstoolkit](https://github.com/AbyssWM/abysstoolkit).
 
 ![](./assets/polkit.png)
 
 ## Usage
 
-See [the hyprland wiki](https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent/).
+See [the abyssland wiki](https://github.com/AbyssWM/Abyssland).
 
 ## Configuration
 
-hyprpolkitagent reads `~/.config/hyprpolkitagent/hyprpolkitagent.conf` (or `$XDG_CONFIG_HOME/hyprpolkitagent/hyprpolkitagent.conf`) at startup. The file is optional, anything missing falls back to the defaults.
+abysspolkitagent reads `~/.config/abysspolkitagent/abysspolkitagent.conf` (or `$XDG_CONFIG_HOME/abysspolkitagent/abysspolkitagent.conf`) at startup. The file is optional, anything missing falls back to the defaults.
 
-It uses hyprlang syntax. Only the `general` section exists right now.
+It uses abyssparse syntax. Only the `general` section exists right now.
 
 Defaults:
 
@@ -32,6 +32,6 @@ Drop the file at the path above with only the keys you want to override. Changes
 
 ## Theming
 
-Colors, corner rounding, font family and font sizes come from the hyprtoolkit palette, not from the agent's own config. Drop a `~/.config/hypr/hyprtoolkit.conf` (or `$XDG_CONFIG_HOME/hypr/hyprtoolkit.conf`) with the keys you want to override. The next dialog the agent shows uses the new values, no restart needed.
+Colors, corner rounding, font family and font sizes come from the abysstoolkit palette, not from the agent's own config. Drop a `~/.config/abyss/abysstoolkit.conf` (or `$XDG_CONFIG_HOME/abyss/abysstoolkit.conf`) with the keys you want to override. The next dialog the agent shows uses the new values, no restart needed.
 
-See [the hyprtoolkit wiki](https://wiki.hyprland.org/Hypr-Ecosystem/hyprtoolkit/) for the full list of available keys.
+See [the abysstoolkit wiki](https://wiki.abyssland.org/Abyss-Ecosystem/abysstoolkit/) for the full list of available keys.

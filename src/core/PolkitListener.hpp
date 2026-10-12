@@ -2,9 +2,9 @@
 
 #include <sdbus-c++/sdbus-c++.h>
 
-#include <hyprutils/memory/SharedPtr.hpp>
+#include <abyssutils/memory/SharedPtr.hpp>
 
-#include <hyprtoolkit/core/Backend.hpp>
+#include <abysstoolkit/core/Backend.hpp>
 
 #include <deque>
 #include <memory>
@@ -34,7 +34,7 @@ class CPolkitListener {
     CPolkitListener();
     ~CPolkitListener();
 
-    bool registerAgent(Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend> backend);
+    bool registerAgent(Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend> backend);
 
     void submitResponse(const std::string& password);
     void cancelCurrent();
@@ -83,11 +83,11 @@ class CPolkitListener {
     std::string getOwnSessionId();
     std::string identityToString(const sdbus::Struct<std::string, std::map<std::string, sdbus::Variant>>& id) const;
 
-    Hyprutils::Memory::CSharedPointer<Hyprtoolkit::IBackend> m_backend;
+    Abyssutils::Memory::CSharedPointer<Abysstoolkit::IBackend> m_backend;
 
     std::unique_ptr<sdbus::IConnection>                      m_conn;
     std::unique_ptr<sdbus::IObject>                          m_agentObject;
-    std::string                                              m_objectPath = "/org/hyprland/PolicyKit1/AuthenticationAgent";
+    std::string                                              m_objectPath = "/org/abyssland/PolicyKit1/AuthenticationAgent";
     std::string                                              m_sessionId;
 
     int                                                      m_watchedFd      = -1;

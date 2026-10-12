@@ -11,16 +11,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(deps REQUIRED IMPORTED_TARGET
-    hyprutils
-    hyprtoolkit
-    hyprgraphics
-    hyprlang
+    abyssutils
+    abysstoolkit
+    abyssgraphics
+    abyssparse
     pixman-1
     libdrm
     sdbus-c++>=2
 )
 
-add_executable(hyprpolkitagent
+add_executable(abysspolkitagent
     src/main.cpp
     src/config/Config.cpp
     src/config/Config.hpp
@@ -32,17 +32,17 @@ add_executable(hyprpolkitagent
     src/ui/Dialog.hpp
 )
 
-target_link_libraries(hyprpolkitagent PRIVATE PkgConfig::deps)
+target_link_libraries(abysspolkitagent PRIVATE PkgConfig::deps)
 
 include(GNUInstallDirs)
 set(LIBEXECDIR ${CMAKE_INSTALL_FULL_LIBEXECDIR})
-configure_file(assets/hyprpolkitagent-service.in hyprpolkitagent.service @ONLY)
-configure_file(assets/hyprpolkitagent-dbus.in hyprpolkitagent-dbus.service @ONLY)
+configure_file(assets/abysspolkitagent-service.in abysspolkitagent.service @ONLY)
+configure_file(assets/abysspolkitagent-dbus.in abysspolkitagent-dbus.service @ONLY)
 
-install(TARGETS hyprpolkitagent
+install(TARGETS abysspolkitagent
         DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
-install(FILES ${CMAKE_BINARY_DIR}/hyprpolkitagent.service
+install(FILES ${CMAKE_BINARY_DIR}/abysspolkitagent.service
         DESTINATION "lib/systemd/user")
-install(FILES ${CMAKE_BINARY_DIR}/hyprpolkitagent-dbus.service
+install(FILES ${CMAKE_BINARY_DIR}/abysspolkitagent-dbus.service
         DESTINATION ${CMAKE_INSTALL_DATADIR}/dbus-1/services
-        RENAME org.hyprland.hyprpolkitagent.service)
+        RENAME org.abyssland.abysspolkitagent.service)

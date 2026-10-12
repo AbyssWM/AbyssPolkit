@@ -3,22 +3,22 @@
 #include "../core/Agent.hpp"
 #include "../config/Config.hpp"
 
-#include <hyprtoolkit/element/Rectangle.hpp>
-#include <hyprtoolkit/element/RowLayout.hpp>
-#include <hyprtoolkit/element/ColumnLayout.hpp>
-#include <hyprtoolkit/element/Combobox.hpp>
-#include <hyprtoolkit/types/SizeType.hpp>
-#include <hyprtoolkit/types/FontTypes.hpp>
-#include <hyprtoolkit/palette/Color.hpp>
-#include <hyprtoolkit/core/Input.hpp>
+#include <abysstoolkit/element/Rectangle.hpp>
+#include <abysstoolkit/element/RowLayout.hpp>
+#include <abysstoolkit/element/ColumnLayout.hpp>
+#include <abysstoolkit/element/Combobox.hpp>
+#include <abysstoolkit/types/SizeType.hpp>
+#include <abysstoolkit/types/FontTypes.hpp>
+#include <abysstoolkit/palette/Color.hpp>
+#include <abysstoolkit/core/Input.hpp>
 
 #include <xkbcommon/xkbcommon-keysyms.h>
 #include <unistd.h>
 #include <print>
 
-using namespace Hyprutils::Memory;
-using namespace Hyprutils::Math;
-using namespace Hyprtoolkit;
+using namespace Abyssutils::Memory;
+using namespace Abyssutils::Math;
+using namespace Abysstoolkit;
 
 CDialog::CDialog(const CPolkitListener::SAuthRequest& req, CSharedPointer<IBackend> backend) : m_backend(backend), m_req(req) {
     build();
@@ -177,7 +177,7 @@ void CDialog::build() {
                    ->minSize({460.0, targetHeight})
                    ->maxSize({600.0, targetHeight})
                    ->appTitle("Authentication Required")
-                   ->appClass("hyprpolkitagent")
+                   ->appClass("abysspolkitagent")
                    ->commence();
 
     m_closeListener = m_window->m_events.closeRequest.listen([] { g_pAgent->cancel(); });
@@ -342,8 +342,8 @@ void CDialog::build() {
             return w;
         };
 
-        m_capsLockLabel = CTextBuilder::begin()->text(std::string{""})->fontSize({CFontSize::HT_FONT_SMALL})->color([] { return CHyprColor{1.0F, 0.75F, 0.2F, 1.F}; })->commence();
-        m_errorLabel    = CTextBuilder::begin()->text(std::string{""})->color([] { return CHyprColor{0.9F, 0.4F, 0.4F, 1.F}; })->commence();
+        m_capsLockLabel = CTextBuilder::begin()->text(std::string{""})->fontSize({CFontSize::HT_FONT_SMALL})->color([] { return CAbyssColor{1.0F, 0.75F, 0.2F, 1.F}; })->commence();
+        m_errorLabel    = CTextBuilder::begin()->text(std::string{""})->color([] { return CAbyssColor{0.9F, 0.4F, 0.4F, 1.F}; })->commence();
         m_infoLabel     = CTextBuilder::begin()->text(std::string{""})->color([] { return g_pAgent->backend()->getPalette()->m_colors.text.darken(0.4); })->commence();
 
         m_capsWrap = makeWrap(m_capsLockLabel);
