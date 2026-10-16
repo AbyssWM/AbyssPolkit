@@ -50,7 +50,7 @@ Makefile
 # Qt generated (in-source build artifacts)
 .qt/
 .rcc/
-hpa/
+
 abyss-polkit-agent_autogen/
 meta_types/
 qmltypes/

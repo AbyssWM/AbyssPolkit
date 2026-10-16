@@ -2,7 +2,7 @@
 
 #include <string>
 
-struct SHPAConfig {
+struct SAbyssPolkitConfig {
     // general {}
     int  passwordFieldWidth = 340;
     int  windowWidth        = 520;
@@ -14,15 +14,15 @@ class CConfigManager {
   public:
     CConfigManager();
 
-    void              load();
+    void                        load();
 
-    const SHPAConfig& get() const {
+    const SAbyssPolkitConfig& get() const {
         return m_cfg;
     }
 
   private:
-    SHPAConfig  m_cfg;
-    std::string m_path;
+    SAbyssPolkitConfig m_cfg;
+    std::string        m_path;
 };
 
 inline CConfigManager* g_pConfigManager = nullptr;
