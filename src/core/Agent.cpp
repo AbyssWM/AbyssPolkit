@@ -36,7 +36,8 @@ void CAgent::beginAuth(CPolkitListener::SAuthRequest req) {
 void CAgent::endAuth() {
     if (m_dialog) {
         m_dialog->close();
-        m_dialog.reset();
+        m_closedDialogs.emplace_back(std::move(m_dialog));
+        m_backend->addIdle([this] { m_closedDialogs.clear(); });
     }
 }
 

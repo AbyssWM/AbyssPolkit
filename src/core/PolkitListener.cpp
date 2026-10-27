@@ -330,6 +330,11 @@ void CPolkitListener::startHelper(SActiveAuth& a) {
     if (a.selectedIdx < 0 || a.selectedIdx >= (int)a.req.identities.size())
         return;
 
+    // a fresh helper has not prompted yet
+    ++m_helperStarts;
+    a.helper.gotPrompt = false;
+    a.helper.buffer.clear();
+
     if (!a.helper.triedFork && tryHelperSocket(a))
         return;
     a.helper.triedFork = true;
@@ -438,8 +443,9 @@ void CPolkitListener::onHelperReadable() {
     if (!m_current || m_current->helper.stdoutFd < 0)
         return;
 
-    auto*   cur = m_current.get();
-    bool    eof = false;
+    auto*      cur    = m_current.get();
+    const auto STARTS = m_helperStarts;
+    bool       eof    = false;
 
     char    buf[1024];
     ssize_t n;
@@ -459,6 +465,10 @@ void CPolkitListener::onHelperReadable() {
         cur->helper.buffer.erase(0, pos + 1);
         handleLine(*cur, line);
     }
+
+    // handleLine may have replaced the helper (retry after a wrong password); the EOF belongs to the old one
+    if (m_current.get() == cur && m_helperStarts != STARTS)
+        return;
 
     if (eof && m_current.get() == cur) {
         const bool wasSocket = (cur->helper.mode == HELPER_SOCKET);

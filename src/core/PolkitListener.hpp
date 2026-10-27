@@ -95,4 +95,6 @@ class CPolkitListener {
 
     std::unique_ptr<SActiveAuth>                             m_current;
     std::deque<std::unique_ptr<SActiveAuth>>                 m_queue;
+    // bumped by startHelper, so a reader can tell that its helper was replaced meanwhile
+    uint64_t                                                 m_helperStarts = 0;
 };
