@@ -34,11 +34,17 @@ void CAgent::beginAuth(CPolkitListener::SAuthRequest req) {
 }
 
 void CAgent::endAuth() {
-    if (m_dialog) {
-        m_dialog->close();
-        m_closedDialogs.emplace_back(std::move(m_dialog));
-        m_backend->addIdle([this] { m_closedDialogs.clear(); });
-    }
+    if (!m_dialog)
+        return;
+
+    // closed and freed on the next idle: endAuth often runs inside the dialog window's own key/click
+    // handlers, and the toolkit still uses the window after they return
+    m_closedDialogs.emplace_back(std::move(m_dialog));
+    m_backend->addIdle([this] {
+        for (auto& d : m_closedDialogs)
+            d->close();
+        m_closedDialogs.clear();
+    });
 }
 
 void CAgent::onRequest(const std::string& prompt, bool echo) {

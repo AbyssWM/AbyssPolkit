@@ -41,7 +41,7 @@ class CAgent {
     CPolkitListener                                          m_listener;
 
     Abyssutils::Memory::CUniquePointer<CDialog>               m_dialog;
-    // closed dialogs, freed on the next idle: endAuth often runs inside the dialog's own key/click handlers
+    // dialogs waiting for the next idle to be closed and freed, see endAuth
     std::vector<Abyssutils::Memory::CUniquePointer<CDialog>> m_closedDialogs;
 };
 
